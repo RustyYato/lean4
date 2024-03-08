@@ -752,7 +752,7 @@ theorem sub_succ_lt_self (a i : Nat) (h : i < a) : a - (i + 1) < a - i := by
 
 theorem sub_ne_zero_of_lt : {a b : Nat} → a < b → b - a ≠ 0
   | 0, 0, h      => absurd h (Nat.lt_irrefl 0)
-  | 0, succ b, _ => by simp
+  | 0, succ b, _ => by intro; contradiction
   | succ a, 0, h => absurd h (Nat.not_lt_zero a.succ)
   | succ a, succ b, h => by rw [Nat.succ_sub_succ]; exact sub_ne_zero_of_lt (Nat.lt_of_succ_lt_succ h)
 
